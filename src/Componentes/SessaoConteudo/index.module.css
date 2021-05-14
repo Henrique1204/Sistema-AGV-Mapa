@@ -1,0 +1,16 @@
+.SessaoConteudo {
+    max-width: 1200px;
+    padding: 2rem 0;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.SessaoConteudo h1 {
+    width: 100%;
+    font-size: 2rem;
+    text-align: center;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    color: #FFF;
+}
