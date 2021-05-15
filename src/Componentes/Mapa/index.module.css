@@ -3,11 +3,17 @@
 }
 
 path.ponto {
-    stroke: #000;
+    stroke: #CCCCCC;
     stroke-width: 5;
     transition: stroke 1s ease;
 }
 
 path.ativo {
-    stroke: #0F0;
+    stroke: #FF435F;
+}
+
+@media (max-width: 780px) {
+    path.ponto {
+        stroke-width: 10;
+    }   
 }

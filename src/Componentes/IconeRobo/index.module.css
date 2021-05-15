@@ -22,3 +22,11 @@
     max-width: 100%;
     display: block;
 }
+
+@media (max-width: 560px) {
+    .IconeRobo {
+        width: 1.25rem;
+        height: 1.25rem;
+        border: 1px solid #394159;
+    }   
+}
