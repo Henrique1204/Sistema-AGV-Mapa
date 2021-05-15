@@ -1,0 +1,12 @@
+.Mapa {
+    width: 100%;
+}
+
+path.ponto {
+    stroke: #000;
+    stroke-width: 5;
+}
+
+path.ativo {
+    stroke: #0F0;
+}

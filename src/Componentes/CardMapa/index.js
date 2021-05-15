@@ -1,21 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import estilos from './index.module.css';
+import Mapa from '../Mapa';
 
-const CardMapa = ({ width }) => {
+const CardMapa = ({ maxWidth }) => {
     return (
-        <div className={estilos.CardMapa} style={{ width: `${width}px` }}>
-            
+        <div className={estilos.CardMapa} style={{ maxWidth: `${maxWidth}px` }}>
+            <Mapa />
         </div>
     );
 };
 
 CardMapa.propTypes = {
-    width: PropTypes.number
+    maxWidth: PropTypes.number
 };
 
 CardMapa.defaultProps = {
-    width: 1100
+    maxWidth: 1200
 };
 
 export default CardMapa;

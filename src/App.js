@@ -6,7 +6,7 @@ import CardMapa from './Componentes/CardMapa';
 const App = () => {
   return (
     <>
-      <SessaoConteudo titulo="Primeiro Teste">
+      <SessaoConteudo titulo="Rota com SVG">
         <CardMapa />
       </SessaoConteudo>
     </>
