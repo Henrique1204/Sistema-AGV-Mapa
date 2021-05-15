@@ -1,0 +1,24 @@
+.IconeRobo {
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0.2rem;
+    border-radius: 50%;
+    border: 3px solid #394159;
+    background-color: #FFF;
+    box-shadow: 2px 2px 6px rgba(44, 44, 44, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.IconeRobo.movendo {
+    opacity: 1;
+    transition: transform 0.75s ease;
+}
+
+.imgRobo {
+    max-width: 100%;
+    display: block;
+}
