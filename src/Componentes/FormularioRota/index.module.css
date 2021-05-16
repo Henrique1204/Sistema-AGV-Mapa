@@ -1,0 +1,43 @@
+.FormularioRota {
+    width: 100%;
+    max-width: 100%;
+    margin: 1rem 1rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 1rem;
+}
+
+.legenda {
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+    color: #FFF;
+    grid-row: 1;
+}
+
+.select {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 1.25rem;
+    color: #888;
+    cursor: pointer;
+    outline: none;
+}
+
+@media (max-width: 780px) {
+    .FormularioRota {
+        grid-template-columns: 1fr;
+    }
+
+    .legenda {
+        font-size: 1rem;
+        grid-row: initial;
+    }
+
+    .select + .legenda {
+        margin-top: 1rem;
+    }
+
+    .select {
+        font-size: 1rem;
+    }
+}

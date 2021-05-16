@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import estilos from './index.module.css';
 import Mapa from '../Mapa';
 
-const CardMapa = ({ maxWidth }) => {
+const CardMapa = ({ maxWidth, pontoRota, tipoPiso }) => {
     return (
-        <div className={estilos.CardMapa} style={{ maxWidth: `${maxWidth}px` }}>
-            <Mapa />
+        <div
+            className={`${estilos.CardMapa} ${tipoPiso ? estilos[tipoPiso] : ''}`}
+            style={{ maxWidth: `${maxWidth}px` }}
+        >
+            <Mapa pontoRota={pontoRota} tipoPiso={tipoPiso} />
         </div>
     );
 };

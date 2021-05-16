@@ -5,6 +5,19 @@
     border-radius: 1rem;
     background-color: #FFF;
     box-shadow: 2px 2px 6px rgba(44, 44, 44, 0.4);
+    transition: background-color 0.3s ease;
+}
+
+.grama {
+    background-color: #282;
+}
+
+.oficina {
+    background-color: #732;
+}
+
+.cimento {
+    background-color: #888;
 }
 
 @media (max-width: 560px) {
