@@ -2,27 +2,28 @@ import React from 'react';
 import estilos from './index.module.css';
 import IconeRobo from '../IconeRobo';
 
-const Mapa = ({ pontoRota, tipoPiso }) => {
+const Mapa = ({ posicaoCard, pontoRota, tipoPiso }) => {
     const [posicaoPath, setPosicaoPath] = React.useState(null);
     const pathRef = React.useRef();
 
-    const calcularPosicao = (elemento) => {
+    const calcularPosicao = React.useCallback((elemento, posicaoInicial) => {
+        const { x: posicaoInicialX, y: posicaoInicialY } = posicaoInicial;
         const { x, y, width, height } = elemento.getBoundingClientRect();
 
         const { curva } = elemento.dataset;
-        const arrayFracao = curva?.split(',').map((item) => Number(item)) || [2, 2];
+        const [ fracaoX, fracaoY ] = curva?.split(',').map((item) => Number(item)) || [2, 2];
 
-        const xCalculado = x + (width / 4 * arrayFracao[0]);
-        const yCalculado = y + (height / 4 * arrayFracao[1]);
+        const xCalculado = (x + (width / 4 * fracaoX)) - posicaoInicialX;
+        const yCalculado = (y + (height / 4 * fracaoY)) - posicaoInicialY;
 
         setPosicaoPath({ xCalculado, yCalculado });
-    };
+    }, []);
 
     React.useEffect(() => {
-        if (pathRef?.current) return calcularPosicao(pathRef.current);
+        if (pathRef?.current) return calcularPosicao(pathRef.current, posicaoCard);
 
-        setPosicaoPath(null);
-    }, [pontoRota]);
+        return setPosicaoPath(null);
+    }, [calcularPosicao, pontoRota, posicaoCard]);
 
     return (
         <>

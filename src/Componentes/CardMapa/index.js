@@ -4,12 +4,30 @@ import estilos from './index.module.css';
 import Mapa from '../Mapa';
 
 const CardMapa = ({ maxWidth, pontoRota, tipoPiso }) => {
+    const [posicaoCard, setPosicaoCard] = React.useState(null);
+    const cardRef = React.useRef();
+
+    React.useEffect(() => {
+        const trocarPosicao = () => {
+            const { x, y } = cardRef.current.getBoundingClientRect();
+            setPosicaoCard({ x, y });
+        }
+
+        trocarPosicao();
+        window.addEventListener('resize', trocarPosicao);
+
+        return () => {
+            window.removeEventListener('resize', trocarPosicao);
+        }
+    }, []);
+
     return (
         <div
+            ref={cardRef}
             className={`${estilos.CardMapa} ${tipoPiso ? estilos[tipoPiso] : ''}`}
             style={{ maxWidth: `${maxWidth}px` }}
         >
-            <Mapa pontoRota={pontoRota} tipoPiso={tipoPiso} />
+            <Mapa posicaoCard={posicaoCard} pontoRota={pontoRota} tipoPiso={tipoPiso} />
         </div>
     );
 };
