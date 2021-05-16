@@ -4,7 +4,7 @@ import IconeRobo from '../IconeRobo';
 
 const Mapa = () => {
     const [pathAtivo, setPathAtivo] = React.useState('A');
-    const [posicaoRobo, setPosicaoRobo] = React.useState(null);
+    const [posicaoPath, setPosicaoPath] = React.useState(null);
     const pathRef = React.useRef();
 
     const calcularPosicao = (elemento) => {
@@ -16,7 +16,7 @@ const Mapa = () => {
         const xCalculado = x + (width / 4 * arrayFracao[0]);
         const yCalculado = y + (height / 4 * arrayFracao[1]);
 
-        setPosicaoRobo({ xCalculado, yCalculado });
+        setPosicaoPath({ xCalculado, yCalculado });
     };
 
     React.useEffect(() => {
@@ -47,7 +47,7 @@ const Mapa = () => {
 
     return (
         <>
-            { posicaoRobo && <IconeRobo posicaoPonto={posicaoRobo} /> }
+            { posicaoPath && <IconeRobo posicaoPonto={posicaoPath} /> }
             <svg  className={estilos.Mapa} viewBox="0 0 1174 477" fill="none">
                 {/* Primeira Curva (Direita - Topo) */}
                 <path
@@ -157,7 +157,7 @@ const Mapa = () => {
                     d="M114.331 474.466H255.849"
                 />
 
-                {/* Terceira Curva (Direita - Baixo) */}
+                {/* Quarta Curva (Direita - Baixo) */}
                 <path
                     ref={pathAtivo === 'R' ? pathRef : undefined}
                     className={estilos.ponto}
