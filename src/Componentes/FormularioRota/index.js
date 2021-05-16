@@ -8,7 +8,7 @@ const pontos = [
     'P', 'Q', 'R', 'S', 'T'
 ];
 
-const FormularioRota = ({ pontoRota, setPontoRota, tipoPiso, setTipoPiso }) => {
+const FormularioRota = ({ pontoRota, setPontoRota, tipoPiso, setTipoPiso, loading, setLoading }) => {
     return (
         <form className={estilos.FormularioRota}>
             <label htmlFor="pontoRota"  className={estilos.legenda}>
@@ -20,7 +20,11 @@ const FormularioRota = ({ pontoRota, setPontoRota, tipoPiso, setTipoPiso }) => {
                 name="pontoRota"
                 id="pontoRota"
                 value={pontoRota}
-                onChange={({ target }) => setPontoRota(target.value)}
+                onChange={ ({ target }) => {
+                    setPontoRota(target.value);
+                    setLoading(true);
+                } }
+                disabled={loading}
             >
                 <option value="">Ponto não definido</option>
                 { pontos.map((ponto) => (

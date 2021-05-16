@@ -1,0 +1,59 @@
+.LoadingRota {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 44, 44, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.spiner {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    display: block;
+    transform: rotate(45deg);
+    animation: animarSpiner 0.75s ease infinite;
+}
+
+@keyframes animarSpiner {
+    0% {
+        border-top: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-left: 4px solid transparent;
+        transform: rotate(45deg);
+    } 25% {
+        border-top: 4px solid #27A;
+        border-right: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-left: 4px solid transparent;
+    } 50% {
+        border-top: 4px solid #27A;
+        border-right: 4px solid #27A;
+        border-bottom: 4px solid transparent;
+        border-left: 4px solid transparent;
+    } 75% {
+        border-top: 4px solid #27A;
+        border-right: 4px solid #27A;
+        border-bottom: 4px solid #27A;
+        border-left: 4px solid transparent;
+    } 100% {
+        border-top: 4px solid #27A;
+        border-right: 4px solid #27A;
+        border-bottom: 4px solid #27A;
+        border-left: 4px solid #27A;
+        transform: rotate(405deg);
+    }
+}
+
+.LoadingRota h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #EEE;
+}

@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import estilos from './index.module.css';
 import Mapa from '../Mapa';
+import LoadingRota from '../LoadingRota';
 
-const CardMapa = ({ maxWidth, pontoRota, tipoPiso }) => {
+const CardMapa = ({ maxWidth, pontoRota, tipoPiso, loading, setLoading }) => {
     const [posicaoCard, setPosicaoCard] = React.useState(null);
     const cardRef = React.useRef();
 
@@ -27,7 +28,8 @@ const CardMapa = ({ maxWidth, pontoRota, tipoPiso }) => {
             className={`${estilos.CardMapa} ${tipoPiso ? estilos[tipoPiso] : ''}`}
             style={{ maxWidth: `${maxWidth}px` }}
         >
-            <Mapa posicaoCard={posicaoCard} pontoRota={pontoRota} tipoPiso={tipoPiso} />
+            <Mapa posicaoCard={posicaoCard} pontoRota={pontoRota} tipoPiso={tipoPiso} loading={loading} />
+            { loading && <LoadingRota setLoading={setLoading} /> }
         </div>
     );
 };

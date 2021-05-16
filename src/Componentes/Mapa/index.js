@@ -2,7 +2,7 @@ import React from 'react';
 import estilos from './index.module.css';
 import IconeRobo from '../IconeRobo';
 
-const Mapa = ({ posicaoCard, pontoRota, tipoPiso }) => {
+const Mapa = ({ posicaoCard, pontoRota, tipoPiso, loading }) => {
     const [posicaoPath, setPosicaoPath] = React.useState(null);
     const pathRef = React.useRef();
 
@@ -20,10 +20,12 @@ const Mapa = ({ posicaoCard, pontoRota, tipoPiso }) => {
     }, []);
 
     React.useEffect(() => {
-        if (pathRef?.current) return calcularPosicao(pathRef.current, posicaoCard);
+        if (!loading) {
+            if (pathRef?.current) return calcularPosicao(pathRef.current, posicaoCard);
 
-        return setPosicaoPath(null);
-    }, [calcularPosicao, pontoRota, posicaoCard]);
+            return setPosicaoPath(null);
+        }
+    }, [loading, calcularPosicao, pontoRota, posicaoCard]);
 
     return (
         <>
@@ -36,129 +38,129 @@ const Mapa = ({ posicaoCard, pontoRota, tipoPiso }) => {
             >
                 {/* Primeira Curva (Direita - Topo) */}
                 <path
-                    ref={pontoRota === 'A' ? pathRef : null}
-                    className={`${estilos.ponto} ${pontoRota === 'A' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'A' && !loading ? pathRef : null}
+                    className={`${estilos.ponto} ${pontoRota === 'A' && !loading ? estilos.ativo : ''}`}
                     d="M116.215 3.50443C26.8926 3.19492 2.27559 24.3708 3.01608 99.5783"
                     data-curva="1,1"
                 />
 
                 <path
-                    ref={pontoRota === 'B' ? pathRef : null}
-                    className={`${estilos.ponto} ${pontoRota === 'B' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'B' && !loading ? pathRef : null}
+                    className={`${estilos.ponto} ${pontoRota === 'B' && !loading ? estilos.ativo : ''}`}
                     d="M114.331 3.5011H255.849"
                 />
 
                 <path
-                    ref={pontoRota === 'C' ? pathRef : null}
-                    className={`${estilos.ponto} ${pontoRota === 'C' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'C' && !loading ? pathRef : null}
+                    className={`${estilos.ponto} ${pontoRota === 'C' && !loading ? estilos.ativo : ''}`}
                     d="M255.849 3.5011H397.367"
                 />
 
                 <path
-                    ref={pontoRota === 'D' ? pathRef : undefined}
-                    className={`${estilos.ponto} ${pontoRota === 'D' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'D' && !loading ? pathRef : undefined}
+                    className={`${estilos.ponto} ${pontoRota === 'D' && !loading ? estilos.ativo : ''}`}
                     d="M397.366 3.5011H586.057"
                 />
 
                 <path
-                    ref={pontoRota === 'E' ? pathRef : undefined}
-                    className={`${estilos.ponto} ${pontoRota === 'E' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'E' && !loading ? pathRef : undefined}
+                    className={`${estilos.ponto} ${pontoRota === 'E' && !loading ? estilos.ativo : ''}`}
                     d="M586.058 3.5011H774.749"
                 />
 
                 <path
-                    ref={pontoRota === 'F' ? pathRef : undefined}
-                    className={`${estilos.ponto} ${pontoRota === 'F' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'F' && !loading ? pathRef : undefined}
+                    className={`${estilos.ponto} ${pontoRota === 'F' && !loading ? estilos.ativo : ''}`}
                     d="M774.747 3.5011H916.266"
                 />
 
                 <path
-                    ref={pontoRota === 'G' ? pathRef : undefined}
-                    className={`${estilos.ponto} ${pontoRota === 'G' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'G' && !loading ? pathRef : undefined}
+                    className={`${estilos.ponto} ${pontoRota === 'G' && !loading ? estilos.ativo : ''}`}
                     d="M916.268 3.5011H1057.79"
                 />
 
                 {/* Segunda Curva (Esquerda - Topo) */}
                 <path
-                    ref={pontoRota === 'H' ? pathRef : undefined}
-                    className={`${estilos.ponto} ${pontoRota === 'H' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'H' && !loading ? pathRef : undefined}
+                    className={`${estilos.ponto} ${pontoRota === 'H' && !loading ? estilos.ativo : ''}`}
                     d="M1057.79 3.50162C1147.11 3.19211 1171.72 24.368 1170.98 99.5755"
                     data-curva="3,1"
                 />
 
                 <path
-                    ref={pontoRota === 'I' ? pathRef : undefined}
-                    className={`${estilos.ponto} ${pontoRota === 'I' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'I' && !loading ? pathRef : undefined}
+                    className={`${estilos.ponto} ${pontoRota === 'I' && !loading ? estilos.ativo : ''}`}
                     d="M1171 97.7002L1171 238.99"
                 />
 
                 <path
-                    ref={pontoRota === 'J' ? pathRef : undefined}
-                    className={`${estilos.ponto} ${pontoRota === 'J' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'J' && !loading ? pathRef : undefined}
+                    className={`${estilos.ponto} ${pontoRota === 'J' && !loading ? estilos.ativo : ''}`}
                     d="M1171 238.991L1171 380.281"
                 />
 
                 {/* Terceira Curva (Esquerda - Baixo) */}
                 <path
-                    ref={pontoRota === 'K' ? pathRef : undefined}
-                    className={`${estilos.ponto} ${pontoRota === 'K' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'K' && !loading ? pathRef : undefined}
+                    className={`${estilos.ponto} ${pontoRota === 'K' && !loading ? estilos.ativo : ''}`}
                     d="M1057.79 474.462C1147.11 474.772 1171.72 453.596 1170.98 378.388"
                     data-curva="3,3"
                 />
 
                 <path
-                    ref={pontoRota === 'L' ? pathRef : undefined}
-                    className={`${estilos.ponto} ${pontoRota === 'L' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'L' && !loading ? pathRef : undefined}
+                    className={`${estilos.ponto} ${pontoRota === 'L' && !loading ? estilos.ativo : ''}`}
                     d="M916.268 474.466H1057.79"
                 />
 
                 <path
-                    ref={pontoRota === 'M' ? pathRef : undefined}
-                    className={`${estilos.ponto} ${pontoRota === 'M' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'M' && !loading ? pathRef : undefined}
+                    className={`${estilos.ponto} ${pontoRota === 'M' && !loading ? estilos.ativo : ''}`}
                     d="M774.747 474.466H916.266"
                 />
 
                 <path
-                    ref={pontoRota === 'N' ? pathRef : undefined}
-                    className={`${estilos.ponto} ${pontoRota === 'N' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'N' && !loading ? pathRef : undefined}
+                    className={`${estilos.ponto} ${pontoRota === 'N' && !loading ? estilos.ativo : ''}`}
                     d="M586.058 474.466H774.749"
                 />
 
                 <path
-                    ref={pontoRota === 'O' ? pathRef : undefined}
-                    className={`${estilos.ponto} ${pontoRota === 'O' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'O' && !loading ? pathRef : undefined}
+                    className={`${estilos.ponto} ${pontoRota === 'O' && !loading ? estilos.ativo : ''}`}
                     d="M397.366 474.466H586.057"
                 />
 
                 <path
-                    ref={pontoRota === 'P' ? pathRef : undefined}
-                    className={`${estilos.ponto} ${pontoRota === 'P' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'P' && !loading ? pathRef : undefined}
+                    className={`${estilos.ponto} ${pontoRota === 'P' && !loading ? estilos.ativo : ''}`}
                     d="M255.849 474.466H397.367"
                 />
 
                 <path
-                    ref={pontoRota === 'Q' ? pathRef : undefined}
-                    className={`${estilos.ponto} ${pontoRota === 'Q' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'Q' && !loading ? pathRef : undefined}
+                    className={`${estilos.ponto} ${pontoRota === 'Q' && !loading ? estilos.ativo : ''}`}
                     d="M114.331 474.466H255.849"
                 />
 
                 {/* Quarta Curva (Direita - Baixo) */}
                 <path
-                    ref={pontoRota === 'R' ? pathRef : undefined}
-                    className={`${estilos.ponto} ${pontoRota === 'R' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'R' && !loading ? pathRef : undefined}
+                    className={`${estilos.ponto} ${pontoRota === 'R' && !loading ? estilos.ativo : ''}`}
                     d="M116.215 474.462C26.8926 474.772 2.27559 453.596 3.01608 378.388"
                     data-curva="1,3"
                 />
 
                 <path
-                    ref={pontoRota === 'S' ? pathRef : undefined}
-                    className={`${estilos.ponto} ${pontoRota === 'S' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'S' && !loading ? pathRef : undefined}
+                    className={`${estilos.ponto} ${pontoRota === 'S' && !loading ? estilos.ativo : ''}`}
                     d="M3.00085 238.991L3.00085 380.281"
                 />
 
                 <path
-                    ref={pontoRota === 'T' ? pathRef : undefined}
-                    className={`${estilos.ponto} ${pontoRota === 'T' ? estilos.ativo : ''}`}
+                    ref={pontoRota === 'T' && !loading ? pathRef : undefined}
+                    className={`${estilos.ponto} ${pontoRota === 'T' && !loading ? estilos.ativo : ''}`}
                     d="M3.00085 97.7002L3.00085 238.99"
                 />
             </svg>
